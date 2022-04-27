@@ -1,3 +1,5 @@
+import { TransferenciaService } from './../services/transferencia.service';
+import { Transferencia } from './../models/transferencia.model';
 import { Component } from "@angular/core";
 
 @Component({
@@ -9,7 +11,15 @@ export class NovaTransferencia {
   valor!: number;
   destino!: string;
 
+  constructor(private _service: TransferenciaService) { }
+
   transferir() {
-    console.log(this.valor, this.destino);
+    const transferencia: Transferencia = {
+      valor: this.valor,
+      destino: this.destino,
+      data: new Date()
+    }
+
+    this._service.adicionar(transferencia);
   }
 }
