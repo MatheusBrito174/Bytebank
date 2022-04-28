@@ -12,7 +12,7 @@
     <tr *ngFor="let transferencia of transferencias" class="tabela__linha">
       <td class="tabela__conteudo">{{ transferencia.valor }}</td>
       <td class="tabela__conteudo">{{ transferencia.destino }}</td>
-      <td class="tabela__conteudo">{{ transferencia.data }}</td>
+      <td class="tabela__conteudo">{{ transferencia.data | date:'short' }}</td>
     </tr>
   </tbody>
 </table>

@@ -20,6 +20,6 @@ export class NovaTransferencia {
       data: new Date()
     }
 
-    this._service.adicionar(transferencia);
+    this._service.adicionar(transferencia).subscribe();
   }
 }
