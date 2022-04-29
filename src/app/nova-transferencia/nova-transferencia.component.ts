@@ -1,17 +1,18 @@
 import { TransferenciaService } from './../services/transferencia.service';
 import { Transferencia } from './../models/transferencia.model';
 import { Component } from "@angular/core";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nova-transferencia',
   templateUrl: './nova-transferencia.component.html',
   styleUrls:['./nova-transferencia.component.scss']
 })
-export class NovaTransferencia {
+export class NovaTransferenciaComponent {
   valor!: number;
   destino!: string;
 
-  constructor(private _service: TransferenciaService) { }
+  constructor(private _service: TransferenciaService, private readonly _router: Router) { }
 
   transferir() {
     const transferencia: Transferencia = {
@@ -20,6 +21,6 @@ export class NovaTransferencia {
       data: new Date()
     }
 
-    this._service.adicionar(transferencia).subscribe();
+    this._service.adicionar(transferencia).subscribe(() => this._router.navigateByUrl('extrato'));
   }
 }
